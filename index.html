@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For you ❤️</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 🌸 PETALS -->
+<div id="petals"></div>
+
+<!-- 🎂 INTRO -->
+<section id="intro" class="page active">
+  <div class="box">
+    <h1>Happy Birthday 🎂</h1>
+    <p>I made this for you...</p>
+
+    <button onclick="next('scene')">
+      Enter ❤️
+    </button>
+  </div>
+</section>
+
+<!-- 🐱 SCENE -->
+<section id="scene" class="page">
+  <div class="box">
+
+    <img src="cat1.png" class="cat">
+
+    <h2>This is for you ❤️</h2>
+
+    <button onclick="next('letter')">
+      Open 💌
+    </button>
+
+  </div>
+</section>
+
+<!-- 💌 LETTER -->
+<section id="letter" class="page">
+
+  <!-- DOODLES -->
+  <img src="cat2.png" class="doodle d1">
+  <img src="cat3.png" class="doodle d2">
+  <img src="cat4.png" class="doodle d3">
+  <img src="cat2.png" class="doodle d4">
+
+  <!-- ENVELOPE -->
+  <div class="envelope" onclick="openEnvelope()">
+
+    <div class="flap"></div>
+
+    <div class="body"></div>
+
+    <p class="hint">
+      Tap to open 💌
+    </p>
+
+  </div>
+
+  <!-- LETTER -->
+  <div class="letter-card hidden" id="letterCard">
+
+    <p id="message"></p>
+
+    <button onclick="openGallery()">
+      Open This ❤️
+    </button>
+
+  </div>
+
+</section>
+
+<!-- 📸 POPUP -->
+<div class="popup hidden" id="popup">
+
+  <span class="close" onclick="closeGallery()">
+    ✕
+  </span>
+
+  <span class="nav prev" onclick="slide(-1)">
+    ❮
+  </span>
+
+  <div class="slider">
+
+    <div class="slides" id="slides">
+
+      <img src="pic1.png">
+      <img src="pic2.png">
+      <img src="pic3.png">
+      <img src="pic4.png">
+      <img src="pic5.png">
+      <img src="pic6.png">
+
+    </div>
+
+  </div>
+
+  <span class="nav next" onclick="slide(1)">
+    ❯
+  </span>
+
+</div>
+
+<!-- 🎵 MUSIC -->
+<audio id="bgMusic" preload="auto" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script type="module" src="script.js"></script>
+
+</body>
+</html>

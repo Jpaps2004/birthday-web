@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Letter 💌</title>
+  <style>
+    body{
+      text-align:center;
+      font-family:Poppins;
+      background:linear-gradient(135deg,#ffe4ec,#fff6f9);
+      padding:50px;
+    }
+
+    textarea{
+      width:80%;
+      height:120px;
+      padding:10px;
+      border-radius:10px;
+    }
+
+    button{
+      margin-top:20px;
+      padding:12px 25px;
+      border:none;
+      border-radius:25px;
+      background:#ff4d6d;
+      color:white;
+      cursor:pointer;
+    }
+
+    #output{
+      margin-top:20px;
+      word-break:break-word;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>Create Your Letter 💌</h2>
+
+<textarea id="msgInput"></textarea><br>
+
+<button onclick="generate()">Generate Link</button>
+
+<p id="output"></p>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBxkDIgrIdjRfqe9jvqwKdYePuOXv1SNfM",
+  authDomain: "birthday-letter-29ba8.firebaseapp.com",
+  projectId: "birthday-letter-29ba8",
+  storageBucket: "birthday-letter-29ba8.firebasestorage.app",
+  messagingSenderId: "625626526040",
+  appId: "1:625626526040:web:c1a401be0427ae311df52d"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.generate = async function(){
+
+  const msg = document.getElementById("msgInput").value;
+
+  if(!msg){
+    alert("Write a message 💌");
+    return;
+  }
+
+  const docRef = await addDoc(collection(db,"letters"),{
+    message: msg
+  });
+
+  const link =
+    window.location.origin + "/index.html?id=" + docRef.id;
+
+  document.getElementById("output").innerText = link;
+}
+
+</script>
+
+</body>
+</html>
